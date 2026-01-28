@@ -22,5 +22,8 @@
     "@vitejs/plugin-react": "latest",
     "typescript": "latest",
     "vite": "latest"
+  },
+  "volta": {
+    "node": "24.13.0"
   }
 }
