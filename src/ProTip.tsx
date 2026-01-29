@@ -1,3 +1,5 @@
+// simple components from MUI example
+import { Container, Box } from '@mui/material';
 import Link from '@mui/material/Link';
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
 import Typography from '@mui/material/Typography';
@@ -18,5 +20,37 @@ export default function ProTip() {
       <Link href="https://mui.com/material-ui/getting-started/templates/">templates</Link>
       {' in the Material UI documentation.'}
     </Typography>
+  );
+}
+
+function Copyright() {
+  return (
+    <Typography
+      variant="body2"
+      align="center"
+      sx={{
+        color: 'text.secondary',
+      }}
+    >
+      {'Copyright © '}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}.
+    </Typography>
+  );
+}
+
+export function App1() {
+  return (
+    <Container maxWidth="sm">
+      <Box sx={{ my: 4 }}>
+        <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
+          Material UI Vite example in TypeScript
+        </Typography>
+        <ProTip />
+        <Copyright />
+      </Box>
+    </Container>
   );
 }
