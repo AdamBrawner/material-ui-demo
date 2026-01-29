@@ -72,7 +72,7 @@ export default function SessionsChart() {
             {
               scaleType: 'point',
               data,
-              tickInterval: (_index, i) => (i + 1) % 5 === 0,
+              tickInterval: (_value, i) => (i + 1) % 5 === 0,
               height: 24,
             },
           ]}
@@ -123,7 +123,7 @@ export default function SessionsChart() {
           ]}
           height={250}
           margin={{ left: 0, right: 20, top: 20, bottom: 0 }}
-          grid={{ horizontal: true }}
+          grid={{ horizontal: true, vertical: true }}
           sx={{
             '& .MuiAreaElement-series-organic': {
               fill: "url('#organic')",
