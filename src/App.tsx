@@ -1,4 +1,5 @@
 import Dashboard from "./Dashboard";
+//import { ProTipApp } from "./ProTip";
 
 
 export default function App() {
@@ -6,3 +7,4 @@ export default function App() {
     <Dashboard />
   );
 }
+// can switch to ProTipApp, Dashboard, DashboardCrud

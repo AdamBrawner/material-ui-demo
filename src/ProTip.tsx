@@ -12,7 +12,7 @@ function LightBulbIcon(props: SvgIconProps) {
   );
 }
 
-export default function ProTip() {
+function ProTip() {
   return (
     <Typography sx={{ mt: 6, mb: 3, color: 'text.secondary' }}>
       <LightBulbIcon sx={{ mr: 1, verticalAlign: 'middle' }} />
@@ -41,7 +41,7 @@ function Copyright() {
   );
 }
 
-export function App1() {
+export function ProTipApp() {
   return (
     <Container maxWidth="sm">
       <Box sx={{ my: 4 }}>
