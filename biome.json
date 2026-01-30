@@ -3,5 +3,12 @@
 	"files": {
 		"maxSize": 2048576,
 		"includes": ["**", "!dist/**/*", "!**/*.min.js"]
+	},
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
 	}
 }
