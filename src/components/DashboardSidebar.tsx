@@ -205,7 +205,7 @@ export default function DashboardSidebar({
 				flexShrink: 0,
 				...getDrawerWidthTransitionMixin(expanded),
 				...(isTemporary ? { position: "absolute" } : {}),
-				[`& .MuiDrawer-paper`]: {
+				"& .MuiDrawer-paper": {
 					position: "absolute",
 					width: drawerWidth,
 					boxSizing: "border-box",

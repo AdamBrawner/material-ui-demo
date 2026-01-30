@@ -77,6 +77,7 @@ function DotIcon({ color }: { color: string }) {
 	return (
 		<Box sx={{ marginRight: 1, display: "flex", alignItems: "center" }}>
 			<svg width={6} height={6}>
+				<title>Dot Icon</title>
 				<circle cx={3} cy={3} r={3} fill={color} />
 			</svg>
 		</Box>

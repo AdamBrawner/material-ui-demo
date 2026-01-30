@@ -6,10 +6,12 @@ export default function SitemarkIcon() {
 			<svg
 				width={86}
 				height={19}
+				aria-label="Sitemark Icon"
 				viewBox="0 0 86 19"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
 			>
+				<title>Sitemark Icon</title>
 				<path
 					fill="#B4C0D3"
 					d="m.787 12.567 6.055-2.675 3.485 2.006.704 6.583-4.295-.035.634-4.577-.74-.422-3.625 2.817-2.218-3.697Z"

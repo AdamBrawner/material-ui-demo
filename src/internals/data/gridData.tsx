@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noExplicitAny: as received from mui template */
 import Avatar from "@mui/material/Avatar";
 import Chip from "@mui/material/Chip";
 import { SparkLineChart } from "@mui/x-charts/SparkLineChart";
@@ -88,7 +89,7 @@ export const columns: GridColDef[] = [
 		headerName: "Status",
 		flex: 0.5,
 		minWidth: 80,
-		renderCell: (params) => renderStatus(params.value as any),
+		renderCell: (params) => renderStatus(params.value),
 	},
 	{
 		field: "users",

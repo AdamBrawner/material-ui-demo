@@ -32,7 +32,7 @@ export const formInputCustomizations: Components<Theme> = {
 					" .MuiPickersOutlinedInput-notchedOutline": {
 						border: "none",
 					},
-					[`&.MuiPickersOutlinedInput-root.Mui-focused`]: {
+					"&.MuiPickersOutlinedInput-root.Mui-focused": {
 						border: `1px solid ${(theme.vars || theme).palette.divider}`,
 						outline: `3px solid ${alpha(brand[500], 0.5)}`,
 						borderColor: brand[400],

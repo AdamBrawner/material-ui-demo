@@ -90,41 +90,46 @@ export interface DialogProps<P = undefined, R = void> {
 	onClose: (result: R) => Promise<void>;
 }
 
-export interface OpenAlertDialog {
-	/**
-	 * Open an alert dialog. Returns a promise that resolves when the user
-	 * closes the dialog.
-	 *
-	 * @param msg The message to show in the dialog.
-	 * @param options Additional options for the dialog.
-	 * @returns A promise that resolves when the dialog is closed.
-	 */
-	(msg: React.ReactNode, options?: AlertOptions): Promise<void>;
-}
+// export interface OpenAlertDialog {
+// 	(msg: React.ReactNode, options?: AlertOptions): Promise<void>;
+// }
+/**
+ * Open an alert dialog. Returns a promise that resolves when the user
+ * closes the dialog.
+ *
+ * @param msg The message to show in the dialog.
+ * @param options Additional options for the dialog.
+ * @returns A promise that resolves when the dialog is closed.
+ */
+export type OpenAlertDialog = (
+	msg: React.ReactNode,
+	options?: AlertOptions,
+) => Promise<void>;
+/**
+ * Open a confirmation dialog. Returns a promise that resolves to true if
+ * the user confirms, false if the user cancels.
+ *
+ * @param msg The message to show in the dialog.
+ * @param options Additional options for the dialog.
+ * @returns A promise that resolves to true if the user confirms, false if the user cancels.
+ */
+export type OpenConfirmDialog = (
+	msg: React.ReactNode,
+	options?: ConfirmOptions,
+) => Promise<boolean>;
 
-export interface OpenConfirmDialog {
-	/**
-	 * Open a confirmation dialog. Returns a promise that resolves to true if
-	 * the user confirms, false if the user cancels.
-	 *
-	 * @param msg The message to show in the dialog.
-	 * @param options Additional options for the dialog.
-	 * @returns A promise that resolves to true if the user confirms, false if the user cancels.
-	 */
-	(msg: React.ReactNode, options?: ConfirmOptions): Promise<boolean>;
-}
-
-export interface OpenPromptDialog {
-	/**
-	 * Open a prompt dialog to request user input. Returns a promise that resolves to the input
-	 * if the user confirms, null if the user cancels.
-	 *
-	 * @param msg The message to show in the dialog.
-	 * @param options Additional options for the dialog.
-	 * @returns A promise that resolves to the user input if the user confirms, null if the user cancels.
-	 */
-	(msg: React.ReactNode, options?: PromptOptions): Promise<string | null>;
-}
+/**
+ * Open a prompt dialog to request user input. Returns a promise that resolves to the input
+ * if the user confirms, null if the user cancels.
+ *
+ * @param msg The message to show in the dialog.
+ * @param options Additional options for the dialog.
+ * @returns A promise that resolves to the user input if the user confirms, null if the user cancels.
+ */
+export type OpenPromptDialog = (
+	msg: React.ReactNode,
+	options?: PromptOptions,
+) => Promise<string | null>;
 
 export type DialogComponent<P, R> = React.ComponentType<DialogProps<P, R>>;
 
@@ -152,22 +157,20 @@ export interface OpenDialog {
 	): Promise<R>;
 }
 
-export interface CloseDialog {
-	/**
-	 * Close a dialog and return a result.
-	 * @param dialog The dialog to close. The promise returned by `open`.
-	 * @param result The result to return from the dialog.
-	 * @returns A promise that resolves when the dialog is fully closed.
-	 */
-	<R>(dialog: Promise<R>, result: R): Promise<R>;
-}
+/**
+ * Close a dialog and return a result.
+ * @param dialog The dialog to close. The promise returned by `open`.
+ * @param result The result to return from the dialog.
+ * @returns A promise that resolves when the dialog is fully closed.
+ */
+export type CloseDialog<R> = (dialog: Promise<R>, result: R) => Promise<R>;
 
-export interface DialogHook {
+export interface DialogHook<R> {
 	alert: OpenAlertDialog;
 	confirm: OpenConfirmDialog;
 	prompt: OpenPromptDialog;
 	open: OpenDialog;
-	close: CloseDialog;
+	close: CloseDialog<R>;
 }
 
 function useDialogLoadingButton(onClose: () => Promise<void>) {
@@ -250,6 +253,24 @@ export function PromptDialog({ open, payload, onClose }: PromptDialogProps) {
 	const [loading, setLoading] = React.useState(false);
 
 	const name = "input";
+	// biome-ignore lint/suspicious/noExplicitAny: figure out event type details later
+	const onSubmit: React.SubmitEventHandler = async (event: any) => {
+		event.preventDefault();
+		try {
+			setLoading(true);
+			const formData = new FormData(event.currentTarget);
+			const value = formData.get(name) ?? "";
+
+			if (typeof value !== "string") {
+				throw new Error("Value must come from a text input.");
+			}
+
+			await onClose(value);
+		} finally {
+			setLoading(false);
+		}
+	};
+
 	return (
 		<Dialog
 			maxWidth="xs"
@@ -259,22 +280,7 @@ export function PromptDialog({ open, payload, onClose }: PromptDialogProps) {
 			slotProps={{
 				paper: {
 					component: "form",
-					onSubmit: async (event: any) => {
-						event.preventDefault();
-						try {
-							setLoading(true);
-							const formData = new FormData(event.currentTarget);
-							const value = formData.get(name) ?? "";
-
-							if (typeof value !== "string") {
-								throw new Error("Value must come from a text input.");
-							}
-
-							await onClose(value);
-						} finally {
-							setLoading(false);
-						}
-					},
+					onSubmit,
 				},
 			}}
 		>
@@ -306,7 +312,7 @@ export function PromptDialog({ open, payload, onClose }: PromptDialogProps) {
 	);
 }
 
-export function useDialogs(): DialogHook {
+export function useDialogs(): DialogHook<boolean> {
 	const dialogsContext = React.useContext(DialogsContext);
 	if (!dialogsContext) {
 		throw new Error("Dialogs context was used without a provider.");

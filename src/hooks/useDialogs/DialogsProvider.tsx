@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noExplicitAny: From MUI template */
 import useEventCallback from "@mui/utils/useEventCallback";
 import * as React from "react";
 import DialogsContext from "./DialogsContext";
