@@ -14,13 +14,15 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { useNavigate } from "react-router";
+import ArsLogo from "../../../public/ars-logo.png";
 import AppTheme from "../../../shared-theme/AppTheme";
 import ColorModeSelect from "../../../shared-theme/ColorModeSelect";
-import { FacebookIcon, GoogleIcon, SitemarkIcon } from "./CustomIcons";
+import { GoogleIcon, OktaIcon } from "./CustomIcons";
 
 const ForgotPassword = React.lazy(() => import("./ForgotPassword"));
 
 const enableForgotPassword = false;
+const signedInRoute = "/employees";
 
 const Card = styled(MuiCard)(({ theme }) => ({
 	display: "flex",
@@ -90,7 +92,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
 			username: data.get("username"),
 			password: data.get("password"),
 		});
-		navigate("/employees");
+		navigate(signedInRoute);
 	};
 
 	const validateInputs = () => {
@@ -128,13 +130,17 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
 					sx={{ position: "fixed", top: "1rem", right: "1rem" }}
 				/>
 				<Card variant="outlined">
-					<SitemarkIcon />
+					<img
+						src={ArsLogo}
+						alt="ARS Logo"
+						style={{ width: "50%", height: "auto", alignSelf: "center" }}
+					/>
 					<Typography
 						component="h1"
 						variant="h4"
 						sx={{ width: "100%", fontSize: "clamp(2rem, 10vw, 2.15rem)" }}
 					>
-						Sign in
+						ARS Unify Login
 					</Typography>
 					<Box
 						component="form"
@@ -224,7 +230,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
 							fullWidth
 							variant="outlined"
 							onClick={() => alert("Sign in with Okta")}
-							startIcon={<FacebookIcon />}
+							startIcon={<OktaIcon />}
 						>
 							Sign in with Okta
 						</Button>

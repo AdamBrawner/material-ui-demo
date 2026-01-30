@@ -21,6 +21,10 @@ const router = createHashRouter([
 		Component: DashboardLayout,
 		children: [
 			{
+				path: "/",
+				Component: SignIn,
+			},
+			{
 				path: "/employees",
 				Component: EmployeeList,
 			},
@@ -39,7 +43,7 @@ const router = createHashRouter([
 			// Fallback route for the example routes in dashboard sidebar items
 			{
 				path: "*",
-				Component: SignIn,
+				Component: EmployeeList,
 			},
 		],
 	},
