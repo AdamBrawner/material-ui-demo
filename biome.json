@@ -1,0 +1,6 @@
+{
+	"files": {
+		"maxSize": 2048576,
+		"includes": ["src/**/*", "shared-theme/**/*"]
+	}
+}
