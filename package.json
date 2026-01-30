@@ -5,8 +5,9 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "tsc -b && vite build",
 		"lint": "npx @biomejs/biome check --write",
+		"ci_lint": "npx @biomejs/biome ci",
+		"build": "tsc -b && vite build",
 		"preview": "vite preview"
 	},
 	"dependencies": {
