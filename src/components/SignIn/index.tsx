@@ -81,8 +81,8 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
 	};
 
 	const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
+		event.preventDefault();
 		if (usernameError || passwordError) {
-			event.preventDefault();
 			return;
 		}
 		const data = new FormData(event.currentTarget);
