@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/a11y/noSvgWithoutTitle: Demo icons */
 import SvgIcon from "@mui/material/SvgIcon";
 
 export function SitemarkIcon() {
