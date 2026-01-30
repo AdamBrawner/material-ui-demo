@@ -30,7 +30,8 @@
     "@types/react-dom": "latest",
     "@vitejs/plugin-react": "latest",
     "typescript": "latest",
-    "vite": "latest"
+    "vite": "latest",
+    "vite-plugin-checker": "^0.12.0"
   },
   "volta": {
     "node": "24.13.0"
