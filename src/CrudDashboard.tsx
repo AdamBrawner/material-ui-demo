@@ -6,6 +6,7 @@ import EmployeeCreate from "./components/EmployeeCreate";
 import EmployeeEdit from "./components/EmployeeEdit";
 import EmployeeList from "./components/EmployeeList";
 import EmployeeShow from "./components/EmployeeShow";
+import SignIn from "./components/SignIn";
 import DialogsProvider from "./hooks/useDialogs/DialogsProvider";
 import NotificationsProvider from "./hooks/useNotifications/NotificationsProvider";
 import {
@@ -38,7 +39,7 @@ const router = createHashRouter([
 			// Fallback route for the example routes in dashboard sidebar items
 			{
 				path: "*",
-				Component: EmployeeList,
+				Component: SignIn,
 			},
 		],
 	},
