@@ -1,10 +1,11 @@
-import Dashboard from "./Dashboard";
+import CrudDashboard from "./CrudDashboard";
+//import Dashboard from "./Dashboard";
 //import { ProTipApp } from "./ProTip";
 
 
 export default function App() {
   return (
-    <Dashboard />
+    <CrudDashboard />
   );
 }
-// can switch to ProTipApp, Dashboard, DashboardCrud
+// can switch to ProTipApp, Dashboard, CrudDashboard
