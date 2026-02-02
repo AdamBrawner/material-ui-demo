@@ -13,16 +13,15 @@ import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
-import { useNavigate } from "react-router";
-import ArsLogo from "../../../public/ars-logo.png";
 import AppTheme from "../../../shared-theme/AppTheme";
 import ColorModeSelect from "../../../shared-theme/ColorModeSelect";
+import ArsLogo from "../../assets/ars-logo.png";
+import { useUser } from "../../context/UserContext";
 import { GoogleIcon, OktaIcon } from "./CustomIcons";
 
 const ForgotPassword = React.lazy(() => import("./ForgotPassword"));
 
 const enableForgotPassword = false;
-const signedInRoute = "/employees";
 
 const Card = styled(MuiCard)(({ theme }) => ({
 	display: "flex",
@@ -72,7 +71,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
 	const [passwordError, setPasswordError] = React.useState(false);
 	const [passwordErrorMessage, setPasswordErrorMessage] = React.useState("");
 	const [open, setOpen] = React.useState(false);
-	const navigate = useNavigate();
+	const user = useUser();
 
 	const handleClickOpen = () => {
 		setOpen(true);
@@ -88,11 +87,13 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
 			return;
 		}
 		const data = new FormData(event.currentTarget);
+		const username = data.get("username") as string;
 		console.log({
-			username: data.get("username"),
+			username,
 			password: data.get("password"),
 		});
-		navigate(signedInRoute);
+		//localStorage.setItem("username", username);
+		user.setUsername(username);
 	};
 
 	const validateInputs = () => {
@@ -161,7 +162,6 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
 								id="username"
 								type="text"
 								name="username"
-								placeholder="User Name"
 								autoComplete="username"
 								autoFocus
 								required
