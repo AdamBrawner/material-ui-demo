@@ -2,18 +2,33 @@
 	"$schema": "https://biomejs.dev/schemas/2.3.13/schema.json",
 	"files": {
 		"maxSize": 2048576,
-		"includes": ["**", "!dist/**/*", "!**/*.min.js"]
+		"includes": [
+			"**",
+			"!dist/**/*",
+			"!**/*.min.js"
+		]
 	},
 	"assist": {
+		"enabled": true,
 		"actions": {
 			"source": {
 				"organizeImports": "on"
 			}
 		}
 	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true
+		}
+	},
+	"formatter": {
+		"enabled": true
+	},
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
-		"useIgnoreFile": true
+		"useIgnoreFile": true,
+		"defaultBranch": "main"
 	}
 }

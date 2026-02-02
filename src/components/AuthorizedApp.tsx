@@ -44,6 +44,6 @@ const router = createHashRouter([
 export const AuthorizedApp = () => {
 	const { username } = useUser();
 	if (!username) return <SignIn />;
-	const signedIn = username === "adam";
+	const signedIn = username === "adam" || username.endsWith("@ars.com");
 	return signedIn ? <RouterProvider router={router} /> : <NotAuthorized />;
 };
