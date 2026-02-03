@@ -19,3 +19,5 @@ export const NotAuthorized = () => {
 		</Box>
 	);
 };
+
+export default NotAuthorized;

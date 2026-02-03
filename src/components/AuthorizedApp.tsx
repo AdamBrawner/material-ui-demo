@@ -1,12 +1,15 @@
+import LinearProgress from "@mui/material/LinearProgress";
+import * as React from "react";
 import { createHashRouter, RouterProvider } from "react-router";
 import { useUser } from "../context/UserContext";
-import DashboardLayout from "./DashboardLayout";
-import EmployeeCreate from "./EmployeeCreate";
-import EmployeeEdit from "./EmployeeEdit";
-import EmployeeList from "./EmployeeList";
-import EmployeeShow from "./EmployeeShow";
-import { NotAuthorized } from "./NotAuthorized";
-import SignIn from "./SignIn";
+
+const DashboardLayout = React.lazy(() => import("./DashboardLayout"));
+const EmployeeCreate = React.lazy(() => import("./EmployeeCreate"));
+const EmployeeEdit = React.lazy(() => import("./EmployeeEdit"));
+const EmployeeList = React.lazy(() => import("./EmployeeList"));
+const EmployeeShow = React.lazy(() => import("./EmployeeShow"));
+const NotAuthorized = React.lazy(() => import("./NotAuthorized"));
+const SignIn = React.lazy(() => import("./SignIn"));
 
 const router = createHashRouter([
 	{
@@ -43,7 +46,16 @@ const router = createHashRouter([
 
 export const AuthorizedApp = () => {
 	const { username } = useUser();
-	if (!username) return <SignIn />;
+	if (!username)
+		return (
+			<React.Suspense fallback={<LinearProgress />}>
+				<SignIn />
+			</React.Suspense>
+		);
 	const signedIn = username === "adam" || username.endsWith("@ars.com");
-	return signedIn ? <RouterProvider router={router} /> : <NotAuthorized />;
+	return (
+		<React.Suspense fallback={<LinearProgress />}>
+			{signedIn ? <RouterProvider router={router} /> : <NotAuthorized />}
+		</React.Suspense>
+	);
 };
