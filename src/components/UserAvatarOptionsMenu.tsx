@@ -61,7 +61,7 @@ export default function UserAvatarOptionsMenu() {
 					},
 				}}
 			>
-				<MenuItem onClick={handleClose}>
+				<MenuItem>
 					<MuiLink
 						component="a"
 						underline="none"

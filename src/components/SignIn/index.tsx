@@ -15,9 +15,10 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import AppTheme from "../../../shared-theme/AppTheme";
 import ColorModeSelect from "../../../shared-theme/ColorModeSelect";
+import ArsNetworkLogo from "../../assets/ars_network_logo.svg";
 import ArsLogo from "../../assets/ars-logo.png";
 import { useUser } from "../../context/UserContext";
-import { GoogleIcon, OktaIcon } from "./CustomIcons";
+import { OktaIcon } from "./CustomIcons";
 
 const ForgotPassword = React.lazy(() => import("./ForgotPassword"));
 
@@ -226,8 +227,14 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
 						<Button
 							fullWidth
 							variant="outlined"
-							onClick={() => alert("Sign in with Google")}
-							startIcon={<GoogleIcon />}
+							onClick={() => alert("Sign in with ARS Corporate account")}
+							startIcon={
+								<img
+									src={ArsNetworkLogo}
+									alt="ARS Corporate Network"
+									style={{ width: 24, height: 24 }}
+								/>
+							}
 						>
 							Sign in on ARS Corporate Network
 						</Button>
