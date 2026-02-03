@@ -1,7 +1,7 @@
 import * as React from "react";
 import { createHashRouter, RouterProvider } from "react-router";
 
-const DashboardLayout = React.lazy(() => import("./DashboardLayout"));
+const UnifyLayout = React.lazy(() => import("./UnifyLayout"));
 const EmployeeCreate = React.lazy(() => import("./EmployeeCreate"));
 const EmployeeEdit = React.lazy(() => import("./EmployeeEdit"));
 const EmployeeList = React.lazy(() => import("./EmployeeList"));
@@ -10,7 +10,7 @@ const NotAuthorized = React.lazy(() => import("./NotAuthorized"));
 
 const router = createHashRouter([
 	{
-		Component: DashboardLayout,
+		Component: UnifyLayout,
 		children: [
 			{
 				path: "/employees",
@@ -27,6 +27,10 @@ const router = createHashRouter([
 			{
 				path: "/employees/:employeeId/edit",
 				Component: EmployeeEdit,
+			},
+			{
+				path: "/",
+				Component: EmployeeList,
 			},
 			// Fallback route for the example routes in dashboard sidebar items
 			{
