@@ -1,6 +1,7 @@
 import LinearProgress from "@mui/material/LinearProgress";
 import * as React from "react";
 import { useUser } from "../context/UserContext";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 const AppRouter = React.lazy(() => import("./AppRouter"));
 const NotAuthorized = React.lazy(() => import("./NotAuthorized"));
@@ -11,7 +12,9 @@ export const AuthorizedApp = () => {
 	if (!username)
 		return (
 			<React.Suspense fallback={<LinearProgress />}>
-				<SignIn />
+				<ErrorBoundary>
+					<SignIn />
+				</ErrorBoundary>
 			</React.Suspense>
 		);
 	const signedIn = username === "adam" || username.endsWith("@ars.com");
@@ -21,3 +24,5 @@ export const AuthorizedApp = () => {
 		</React.Suspense>
 	);
 };
+
+export default AuthorizedApp;

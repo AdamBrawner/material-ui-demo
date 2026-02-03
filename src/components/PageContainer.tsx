@@ -9,6 +9,7 @@ import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import type * as React from "react";
 import { Link } from "react-router";
+import ErrorBoundary from "./ErrorBoundary";
 
 const PageContentHeader = styled("div")(({ theme }) => ({
 	display: "flex",
@@ -87,7 +88,7 @@ export default function PageContainer(props: PageContainerProps) {
 					</PageContentHeader>
 				</Stack>
 				<Box sx={{ flex: 1, display: "flex", flexDirection: "column" }}>
-					{children}
+					<ErrorBoundary>{children}</ErrorBoundary>
 				</Box>
 			</Stack>
 		</Container>
