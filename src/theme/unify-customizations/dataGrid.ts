@@ -8,12 +8,11 @@ import { paperClasses } from "@mui/material/Paper";
 import { alpha, type Theme } from "@mui/material/styles";
 import { tablePaginationClasses } from "@mui/material/TablePagination";
 import { gridClasses } from "@mui/x-data-grid";
-import type { DataGridProComponents } from "@mui/x-data-grid-pro/themeAugmentation";
+import type { DataGridComponents } from "@mui/x-data-grid/themeAugmentation";
 import { gray } from "../../../shared-theme/themePrimitives";
 
 /* eslint-disable import/prefer-default-export */
-export const dataGridCustomizations: DataGridProComponents<Theme> &
-	DataGridProComponents<Theme> = {
+export const dataGridCustomizations: DataGridComponents<Theme> = {
 	MuiDataGrid: {
 		styleOverrides: {
 			root: ({ theme }) => ({
