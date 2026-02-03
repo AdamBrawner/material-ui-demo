@@ -20,7 +20,6 @@ import {
 	useTreeItem,
 } from "@mui/x-tree-view/useTreeItem";
 import { animated, useSpring } from "@react-spring/web";
-import clsx from "clsx";
 import * as React from "react";
 
 type Color = "blue" | "green";
@@ -157,12 +156,12 @@ const CustomTreeItem = React.forwardRef(function CustomTreeItem(
 			<TreeItemRoot {...getRootProps(other)}>
 				<TreeItemContent
 					{...getContentProps({
-						className: clsx("content", {
+						/*		className: clsx("content", {
 							expanded: status.expanded,
 							selected: status.selected,
 							focused: status.focused,
 							disabled: status.disabled,
-						}),
+						}),*/
 					})}
 				>
 					{status.expandable && (

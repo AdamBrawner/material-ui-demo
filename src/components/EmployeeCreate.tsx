@@ -51,9 +51,7 @@ export default function EmployeeCreate() {
 
 	const handleFormFieldChange = React.useCallback(
 		(name: keyof EmployeeFormState["values"], value: FormFieldValue) => {
-			const validateField = async (
-				values: Partial<EmployeeFormState["values"]>,
-			) => {
+			const validateField = (values: Partial<EmployeeFormState["values"]>) => {
 				const { issues } = validateEmployee(values);
 				setFormErrors({
 					...formErrors,

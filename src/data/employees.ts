@@ -53,7 +53,7 @@ export function setEmployeesStore(employees: Employee[]) {
 	return localStorage.setItem("employees-store", JSON.stringify(employees));
 }
 
-export async function getMany({
+export function getMany({
 	paginationModel,
 	filterModel,
 	sortModel,
@@ -61,7 +61,7 @@ export async function getMany({
 	paginationModel: GridPaginationModel;
 	sortModel: GridSortModel;
 	filterModel: GridFilterModel;
-}): Promise<{ items: Employee[]; itemCount: number }> {
+}): { items: Employee[]; itemCount: number } {
 	const employeesStore = getEmployeesStore();
 
 	let filteredEmployees = [...employeesStore];
@@ -128,7 +128,7 @@ export async function getMany({
 	};
 }
 
-export async function getOne(employeeId: number) {
+export function getOne(employeeId: number) {
 	const employeesStore = getEmployeesStore();
 
 	const employeeToShow = employeesStore.find(
@@ -141,7 +141,7 @@ export async function getOne(employeeId: number) {
 	return employeeToShow;
 }
 
-export async function createOne(data: Omit<Employee, "id">) {
+export function createOne(data: Omit<Employee, "id">) {
 	const employeesStore = getEmployeesStore();
 
 	const newEmployee = {
@@ -156,7 +156,7 @@ export async function createOne(data: Omit<Employee, "id">) {
 	return newEmployee;
 }
 
-export async function updateOne(
+export function updateOne(
 	employeeId: number,
 	data: Partial<Omit<Employee, "id">>,
 ) {
@@ -180,7 +180,7 @@ export async function updateOne(
 	return updatedEmployee;
 }
 
-export async function deleteOne(employeeId: number) {
+export function deleteOne(employeeId: number) {
 	const employeesStore = getEmployeesStore();
 
 	setEmployeesStore(
