@@ -3,7 +3,6 @@ import * as React from "react";
 import { useUser } from "../context/UserContext";
 
 const AppRouter = React.lazy(() => import("./AppRouter"));
-
 const NotAuthorized = React.lazy(() => import("./NotAuthorized"));
 const SignIn = React.lazy(() => import("./SignIn"));
 
