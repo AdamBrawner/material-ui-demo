@@ -61,18 +61,28 @@ export default function UserAvatarOptionsMenu() {
 					},
 				}}
 			>
-				<MenuItem onClick={handleClose}>My account</MenuItem>
-				<Divider />
 				<MenuItem onClick={handleClose}>
+					<MuiLink
+						component="a"
+						underline="none"
+						color="inherit"
+						href="https://unify.ars.com/UnifyAdmin/MyAccount"
+					>
+						<ListItemText>My Account</ListItemText>
+					</MuiLink>
+				</MenuItem>
+
+				<MenuItem>
 					<MuiLink
 						component="a"
 						underline="none"
 						color="inherit"
 						href="https://unify.ars.com"
 					>
-						Unify apps
+						<ListItemText>Unify Apps</ListItemText>
 					</MuiLink>
 				</MenuItem>
+
 				<Divider />
 				<MenuItem
 					onClick={handleLogout}
