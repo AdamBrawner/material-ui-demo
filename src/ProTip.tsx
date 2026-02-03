@@ -1,5 +1,6 @@
 // simple components from MUI example
-import { Box, Container } from "@mui/material";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import SvgIcon, { type SvgIconProps } from "@mui/material/SvgIcon";
 import Typography from "@mui/material/Typography";
