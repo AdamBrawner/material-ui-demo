@@ -227,7 +227,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
 						<Button
 							fullWidth
 							variant="outlined"
-							onClick={() => alert("Sign in with ARS Corporate account")}
+							onClick={() => user.setUsername("bauto@ars.com")}
 							startIcon={
 								<img
 									src={ArsNetworkLogo}
