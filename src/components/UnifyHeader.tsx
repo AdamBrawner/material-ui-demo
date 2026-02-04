@@ -77,8 +77,16 @@ export default function UnifyHeader({
 	);
 
 	return (
-		<AppBar color="inherit" position="absolute" sx={{ displayPrint: "none" }}>
-			<Toolbar sx={{ backgroundColor: "inherit", mx: { xs: -0.75, sm: -1 } }}>
+		<AppBar
+			position="absolute"
+			sx={{
+				backgroundColor: (theme.vars ?? theme).palette.primary.main,
+				displayPrint: "none",
+			}}
+		>
+			<Toolbar
+				sx={{ backgroundColor: "transparent", mx: { xs: -0.75, sm: -1 } }}
+			>
 				<Stack
 					direction="row"
 					justifyContent="space-between"
@@ -97,7 +105,7 @@ export default function UnifyHeader({
 									<Typography
 										variant="h6"
 										sx={{
-											color: (theme.vars ?? theme).palette.primary.main,
+											color: (theme.vars ?? theme).palette.primary.contrastText,
 											fontWeight: "700",
 											ml: 1,
 											whiteSpace: "nowrap",
