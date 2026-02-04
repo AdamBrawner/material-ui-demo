@@ -1,10 +1,14 @@
 "use client";
+import NavigateNextRoundedIcon from "@mui/icons-material/NavigateNextRounded";
 import Box from "@mui/material/Box";
+import Breadcrumbs, { breadcrumbsClasses } from "@mui/material/Breadcrumbs";
 import Container, { type ContainerProps } from "@mui/material/Container";
+import MuiLink from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import type * as React from "react";
+import { Link } from "react-router";
 import ErrorBoundary from "./ErrorBoundary";
 
 const PageContentHeader = styled("div")(({ theme }) => ({
@@ -12,6 +16,17 @@ const PageContentHeader = styled("div")(({ theme }) => ({
 	flexDirection: "row",
 	justifyContent: "space-between",
 	gap: theme.spacing(2),
+}));
+
+const PageHeaderBreadcrumbs = styled(Breadcrumbs)(({ theme }) => ({
+	margin: theme.spacing(1, 0),
+	[`& .${breadcrumbsClasses.separator}`]: {
+		color: (theme.vars || theme).palette.action.disabled,
+		margin: 1,
+	},
+	[`& .${breadcrumbsClasses.ol}`]: {
+		alignItems: "center",
+	},
 }));
 
 const PageHeaderToolbar = styled("div")(({ theme }) => ({
@@ -33,13 +48,42 @@ export interface PageContainerProps extends ContainerProps {
 	actions?: React.ReactNode;
 }
 
-export default function PageContainer(props: PageContainerProps) {
-	const { children, title, actions = null } = props;
+export default function PageContainerWithBreadcrumbs(
+	props: PageContainerProps,
+) {
+	const { children, breadcrumbs, title, actions = null } = props;
 
 	return (
 		<Container sx={{ flex: 1, display: "flex", flexDirection: "column" }}>
 			<Stack sx={{ flex: 1, my: 2 }} spacing={2}>
 				<Stack>
+					<PageHeaderBreadcrumbs
+						aria-label="breadcrumb"
+						separator={<NavigateNextRoundedIcon fontSize="small" />}
+					>
+						{breadcrumbs
+							? breadcrumbs.map((breadcrumb, index) => {
+									return breadcrumb.path ? (
+										<MuiLink
+											key={index}
+											component={Link}
+											underline="hover"
+											color="inherit"
+											to={breadcrumb.path}
+										>
+											{breadcrumb.title}
+										</MuiLink>
+									) : (
+										<Typography
+											key={index}
+											sx={{ color: "text.primary", fontWeight: 600 }}
+										>
+											{breadcrumb.title}
+										</Typography>
+									);
+								})
+							: null}
+					</PageHeaderBreadcrumbs>
 					<PageContentHeader>
 						{title ? <Typography variant="h4">{title}</Typography> : null}
 						<PageHeaderToolbar>{actions}</PageHeaderToolbar>
