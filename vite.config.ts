@@ -14,7 +14,7 @@ export default defineConfig({
 		checker({
 			typescript: true,
 			biome: {
-				command: "check",
+				command: "format",
 			},
 		}),
 	],
