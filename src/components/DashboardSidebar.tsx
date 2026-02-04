@@ -262,6 +262,7 @@ export default function DashboardSidebar({
 						sm: disableCollapsibleSidebar ? "none" : "block",
 						md: "none",
 					},
+					height: "100vh",
 					...getDrawerSharedSx(false),
 				}}
 			>
@@ -271,6 +272,7 @@ export default function DashboardSidebar({
 				variant="permanent"
 				sx={{
 					display: { xs: "none", md: "block" },
+					height: "100vh",
 					...getDrawerSharedSx(false),
 				}}
 			>
