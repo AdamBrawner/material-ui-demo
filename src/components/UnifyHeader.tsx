@@ -66,6 +66,7 @@ export default function UnifyHeader({
 							size="small"
 							aria-label={`${isExpanded ? collapseMenuActionText : expandMenuActionText} navigation menu`}
 							onClick={handleMenuOpen}
+							sx={{ borderColor: "transparent" }}
 						>
 							{isExpanded ? <MenuOpenIcon /> : <MenuIcon />}
 						</IconButton>
