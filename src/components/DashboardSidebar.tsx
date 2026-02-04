@@ -203,6 +203,7 @@ export default function DashboardSidebar({
 				displayPrint: "none",
 				width: drawerWidth,
 				flexShrink: 0,
+				height: "100vh",
 				...getDrawerWidthTransitionMixin(expanded),
 				...(isTemporary ? { position: "absolute" } : {}),
 				"& .MuiDrawer-paper": {
@@ -262,7 +263,6 @@ export default function DashboardSidebar({
 						sm: disableCollapsibleSidebar ? "none" : "block",
 						md: "none",
 					},
-					height: "100vh",
 					...getDrawerSharedSx(false),
 				}}
 			>
@@ -272,7 +272,6 @@ export default function DashboardSidebar({
 				variant="permanent"
 				sx={{
 					display: { xs: "none", md: "block" },
-					height: "100vh",
 					...getDrawerSharedSx(false),
 				}}
 			>
