@@ -1,12 +1,12 @@
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import IconButton from "@mui/material/IconButton";
+import IconButton, { type IconButtonProps } from "@mui/material/IconButton";
 import { useColorScheme, useTheme } from "@mui/material/styles";
 import Tooltip from "@mui/material/Tooltip";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import * as React from "react";
 
-export default function ThemeSwitcher() {
+export default function ThemeSwitcher(props: { sx?: IconButtonProps["sx"] }) {
 	const theme = useTheme();
 
 	const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
@@ -23,10 +23,11 @@ export default function ThemeSwitcher() {
 	return (
 		<Tooltip
 			title={`${paletteMode === "dark" ? "Light" : "Dark"} mode`}
-			enterDelay={1000}
+			enterDelay={600}
 		>
 			<div>
 				<IconButton
+					sx={props.sx}
 					size="small"
 					aria-label={`Switch to ${paletteMode === "dark" ? "light" : "dark"} mode`}
 					onClick={toggleMode}

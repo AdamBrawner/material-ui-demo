@@ -14,10 +14,10 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import AppTheme from "../../../shared-theme/AppTheme";
-import ColorModeIconDropdown from "../../../shared-theme/ColorModeIconDropdown";
 import ArsNetworkLogo from "../../assets/ars_network_logo.svg";
 import ArsLogo from "../../assets/ars-logo.png";
 import { useUser } from "../../context/UserContext";
+import ThemeSwitcher from "../ThemeSwitcher";
 import { OktaIcon } from "./CustomIcons";
 
 const ForgotPassword = React.lazy(() => import("./ForgotPassword"));
@@ -133,8 +133,13 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
 		<AppTheme {...props}>
 			<CssBaseline enableColorScheme />
 			<SignInContainer direction="column" justifyContent="space-between">
-				<ColorModeIconDropdown
-					sx={{ position: "fixed", top: "1rem", right: "1rem" }}
+				<ThemeSwitcher
+					sx={{
+						position: "fixed",
+						top: "1rem",
+						right: "1rem",
+						borderColor: "divider",
+					}}
 				/>
 				<Card variant="outlined">
 					<img

@@ -125,7 +125,7 @@ export default function UnifyHeader({
 						sx={{ marginLeft: "auto" }}
 					>
 						<Stack direction="row" alignItems="center">
-							<ThemeSwitcher />
+							<ThemeSwitcher sx={{ borderColor: "transparent" }} />
 							<UserAvatar />
 						</Stack>
 					</Stack>
