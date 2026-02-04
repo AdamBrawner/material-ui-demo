@@ -14,7 +14,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import AppTheme from "../../../shared-theme/AppTheme";
-import ColorModeSelect from "../../../shared-theme/ColorModeSelect";
+import ColorModeIconDropdown from "../../../shared-theme/ColorModeIconDropdown";
 import ArsNetworkLogo from "../../assets/ars_network_logo.svg";
 import ArsLogo from "../../assets/ars-logo.png";
 import { useUser } from "../../context/UserContext";
@@ -133,7 +133,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
 		<AppTheme {...props}>
 			<CssBaseline enableColorScheme />
 			<SignInContainer direction="column" justifyContent="space-between">
-				<ColorModeSelect
+				<ColorModeIconDropdown
 					sx={{ position: "fixed", top: "1rem", right: "1rem" }}
 				/>
 				<Card variant="outlined">
