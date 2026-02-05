@@ -336,6 +336,9 @@ export default function EmployeeList() {
 							baseIconButton: {
 								size: "small",
 							},
+							toolbar: {
+								quickFilterProps: { debounceMs: 500 },
+							},
 						}}
 					/>
 				)}
