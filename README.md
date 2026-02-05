@@ -1,15 +1,14 @@
 # Material UI - Vite example in TypeScript
 
-## How to use
+- This is a playground for ui concepts. 
+- It doesn't connect to any servers.
+- Can change entry point to several options listed in App.tsx
+- shared-themes folder lives beside src as in mui repo
 
-Download the example [or clone the repo](https://github.com/mui/material-ui):
+Based on  [MUI examples](https://github.com/mui/material-ui):
 
 <!-- #target-branch-reference -->
 
-```bash
-curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2 material-ui-master/examples/material-ui-vite-ts
-cd material-ui-vite-ts
-```
 
 Install it and run:
 
