@@ -1,0 +1,1 @@
+ESLint isn't used in these projects. Files in this directory are the default eslint config from npm create vite TS template Feb 2026. 
